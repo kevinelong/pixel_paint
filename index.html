@@ -1,0 +1,55 @@
+<head>
+    <script src="colors.js"></script>
+    <script src="color_utils.js"></script>
+    <style>
+        .pallette{
+            max-width: 50vw;
+            max-height: 50vw;
+            overflow: hidden;
+        }
+        .swatch{
+            width: 4vw;
+            height: 4vw;
+            display: inline-block;
+        }
+        body{
+            overflow: hidden;
+            margin:0;
+            padding:0;
+        }
+        #board{
+            width: 160px;
+            height: 160px;;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="board"></div>
+    <div id="pallette"></div>
+</body>
+<script>
+    const h = window.innerHeight;
+    const w = window.innerWidth;
+    let p = getPallette();
+    pallette.innerHTML = p;
+
+    function fakePixel(x,y){
+        const div = document.createElement("div");
+        div.style.width = "1px"
+        div.style.height = "1px"
+        div.style.backgroundColor = "silver";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.position="absolute";
+        return div;
+    }
+
+    window.addEventListener("mousemove", e=>{
+        console.log(e);
+        if(e.buttons===1){
+            board.appendChild(fakePixel(e.offsetX, e.offsetY))
+        }
+        // document.body.innerHTML += e
+    });
+</script>
