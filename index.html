@@ -34,21 +34,25 @@
     let p = getPallette();
     pallette.innerHTML = p;
 
+    selectedColor="silver";
+    
     function fakePixel(x,y){
         const div = document.createElement("div");
         div.style.width = "1px"
         div.style.height = "1px"
-        div.style.backgroundColor = "silver";
+        div.style.backgroundColor = selectedColor;
         div.style.left = x + "px";
         div.style.top = y + "px";
         div.style.position="absolute";
         return div;
     }
 
-    window.addEventListener("mousemove", e=>{
-        console.log(e);
+    board.addEventListener("mousemove", e=>{
+        // if(e.buttons===1 && e.target === board){
         if(e.buttons===1){
-            board.appendChild(fakePixel(e.offsetX, e.offsetY))
+            console.log(e);
+            board.appendChild(fakePixel(e.clientX, e.clientY))
+            // board.appendChild(fakePixel(e.offsetX, e.offsetY))
         }
         // document.body.innerHTML += e
     });
